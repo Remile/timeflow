@@ -1,0 +1,21 @@
+.
+├── data
+│   ├── images
+│   └── logger.db
+├── project_structure.txt
+├── PROJECT_SUMMARY.md
+├── pyproject.toml
+├── QUICKSTART.md
+├── README.md
+└── src
+    └── logger
+        ├── __init__.py
+        ├── api
+        ├── cli.py
+        ├── config.py
+        ├── db
+        ├── py.typed
+        ├── utils
+        └── web
+
+9 directories, 10 files

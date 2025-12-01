@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}时间线 - 生活日志{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>📅 日志时间线</h2>
+    <p class="subtitle">记录你的每一刻</p>
+</div>
+
+<div class="filters">
+    <form method="get" action="/" class="filter-form">
+        <div class="filter-group">
+            <label for="category">分类：</label>
+            <select name="category" id="category">
+                <option value="">全部</option>
+                {% for cat in categories %}
+                <option value="{{ cat }}" {% if cat == selected_category %}selected{% endif %}>{{ cat }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label for="start_date">开始日期：</label>
+            <input type="date" name="start_date" id="start_date" value="{{ start_date or '' }}">
+        </div>
+        
+        <div class="filter-group">
+            <label for="end_date">结束日期：</label>
+            <input type="date" name="end_date" id="end_date" value="{{ end_date or '' }}">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">筛选</button>
+        <a href="/" class="btn btn-secondary">重置</a>
+    </form>
+</div>
+
+<div class="logs-container">
+    {% if logs %}
+        {% for log in logs %}
+        <div class="log-card">
+            <div class="log-header">
+                <span class="log-id">#{{ log.id }}</span>
+                <span class="log-category category-{{ log.category }}">{{ log.category }}</span>
+                <span class="log-time">{{ log.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+            </div>
+            
+            <div class="log-body">
+                <h3 class="log-summary">{{ log.ai_summary }}</h3>
+                
+                {% if log.original_text %}
+                <div class="log-original">
+                    <strong>原文：</strong>
+                    <p>{{ log.original_text[:300] }}{% if log.original_text|length > 300 %}...{% endif %}</p>
+                </div>
+                {% endif %}
+                
+                {% if log.image_path %}
+                <div class="log-image">
+                    <span class="image-indicator">🖼️ 包含图片</span>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="log-footer">
+                {% if log.tags %}
+                <div class="log-tags">
+                    {% for tag in log.tags %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if log.duration_estimate %}
+                <div class="log-duration">
+                    ⏱ {{ log.duration_estimate }} 分钟
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty-state">
+            <p>😊 还没有日志记录</p>
+            <p class="hint">使用命令行工具添加你的第一条日志：<code>logger add</code></p>
+        </div>
+    {% endif %}
+</div>
+
+{% if logs|length >= 50 %}
+<div class="pagination-hint">
+    <p>💡 提示：使用筛选功能查看更多日志</p>
+</div>
+{% endif %}
+{% endblock %}
+

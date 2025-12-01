@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block title %}统计 - 生活日志{% endblock %}
+
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>📊 统计分析</h2>
+    <p class="subtitle">了解你的时间都花在哪里</p>
+</div>
+
+<div class="period-selector">
+    <a href="/stats?period=today" class="btn {% if period == 'today' %}btn-primary{% else %}btn-secondary{% endif %}">今日</a>
+    <a href="/stats?period=week" class="btn {% if period == 'week' %}btn-primary{% else %}btn-secondary{% endif %}">本周</a>
+    <a href="/stats?period=month" class="btn {% if period == 'month' %}btn-primary{% else %}btn-secondary{% endif %}">本月</a>
+    <a href="/stats?period=all" class="btn {% if period == 'all' %}btn-primary{% else %}btn-secondary{% endif %}">全部</a>
+</div>
+
+<div class="stats-overview">
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.total_logs }}</div>
+        <div class="stat-label">总日志数</div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.total_duration_minutes }}</div>
+        <div class="stat-label">总耗时 (分钟)</div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-value">{{ "%.1f"|format(stats.total_duration_minutes / 60) }}</div>
+        <div class="stat-label">总耗时 (小时)</div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.category_counts|length }}</div>
+        <div class="stat-label">活动类别</div>
+    </div>
+</div>
+
+<div class="charts-container">
+    <div class="chart-card">
+        <h3>分类分布</h3>
+        <canvas id="categoryChart"></canvas>
+    </div>
+    
+    <div class="chart-card">
+        <h3>分类耗时分布</h3>
+        <canvas id="durationChart"></canvas>
+    </div>
+</div>
+
+<div class="charts-container">
+    <div class="chart-card full-width">
+        <h3>每日日志数量</h3>
+        <canvas id="dailyChart"></canvas>
+    </div>
+</div>
+
+{% if stats.top_tags %}
+<div class="tags-cloud">
+    <h3>🏷️ 热门标签</h3>
+    <div class="tags-container">
+        {% for tag, count in stats.top_tags.items() %}
+        <span class="tag tag-size-{{ (count / stats.top_tags.values()|list|max * 3)|int + 1 }}">
+            {{ tag }} <small>({{ count }})</small>
+        </span>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<div class="category-details">
+    <h3>📁 分类详情</h3>
+    <table class="stats-table">
+        <thead>
+            <tr>
+                <th>分类</th>
+                <th>数量</th>
+                <th>耗时 (分钟)</th>
+                <th>占比</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category, count in stats.category_counts.items()|sort(attribute='1', reverse=true) %}
+            <tr>
+                <td><span class="category-badge category-{{ category }}">{{ category }}</span></td>
+                <td>{{ count }}</td>
+                <td>{{ stats.duration_by_category.get(category, 0) }}</td>
+                <td>{{ "%.1f"|format(count / stats.total_logs * 100) }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+// Category distribution pie chart
+const categoryData = {{ stats.category_counts|tojson }};
+const categoryLabels = Object.keys(categoryData);
+const categoryCounts = Object.values(categoryData);
+
+const categoryColors = {
+    '工作': '#3b82f6',
+    '学习': '#10b981',
+    '娱乐': '#f59e0b',
+    '运动': '#ef4444',
+    '社交': '#8b5cf6',
+    '生活': '#06b6d4',
+    '其他': '#6b7280'
+};
+
+const categoryBgColors = categoryLabels.map(label => categoryColors[label] || '#6b7280');
+
+new Chart(document.getElementById('categoryChart'), {
+    type: 'pie',
+    data: {
+        labels: categoryLabels,
+        datasets: [{
+            data: categoryCounts,
+            backgroundColor: categoryBgColors,
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom',
+            }
+        }
+    }
+});
+
+// Duration by category bar chart
+const durationData = {{ stats.duration_by_category|tojson }};
+const durationLabels = Object.keys(durationData);
+const durationValues = Object.values(durationData);
+const durationColors = durationLabels.map(label => categoryColors[label] || '#6b7280');
+
+new Chart(document.getElementById('durationChart'), {
+    type: 'bar',
+    data: {
+        labels: durationLabels,
+        datasets: [{
+            label: '耗时 (分钟)',
+            data: durationValues,
+            backgroundColor: durationColors,
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false,
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Daily log count line chart
+const dailyData = {{ stats.daily_counts|tojson }};
+const dailyLabels = Object.keys(dailyData).sort();
+const dailyCounts = dailyLabels.map(date => dailyData[date]);
+
+new Chart(document.getElementById('dailyChart'), {
+    type: 'line',
+    data: {
+        labels: dailyLabels,
+        datasets: [{
+            label: '日志数量',
+            data: dailyCounts,
+            borderColor: '#3b82f6',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            fill: true,
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false,
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    }
+});
+</script>
+{% endblock %}
+
