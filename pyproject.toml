@@ -21,7 +21,7 @@ dependencies = [
 ]
 
 [project.scripts]
-logger = "logger.cli:cli"
+timeflow = "logger.cli:cli"
 
 [build-system]
 requires = ["uv_build>=0.8.11,<0.9.0"]
