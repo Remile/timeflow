@@ -21,10 +21,10 @@
 
 ### 2. 命令行工具 ✓
 
-- [x] `logger add` - 添加日志 (支持剪贴板/文字/图片)
-- [x] `logger list` - 查询日志 (支持多种筛选)
-- [x] `logger stats` - 统计分析 (今日/本周/本月/全部)
-- [x] `logger web` - 启动 Web 服务器
+- [x] `timeflow add` - 添加日志 (支持剪贴板/文字/图片)
+- [x] `timeflow list` - 查询日志 (支持多种筛选)
+- [x] `timeflow stats` - 统计分析 (今日/本周/本月/全部)
+- [x] `timeflow web` - 启动 Web 服务器
 
 ### 3. Web 界面 ✓
 
@@ -142,7 +142,7 @@ logger/
 
 1. 运行 `uv sync` 安装依赖
 2. 配置 `.env` 文件（设置 GEMINI_API_KEY）
-3. 运行 `uv run logger add` 开始记录
+3. 运行 `uv run timeflow add` 开始记录
 
 ## 💡 未来改进方向（可选）
 

@@ -25,7 +25,7 @@
 
 #### 方式 1：全局安装（推荐）
 
-使用 `uv tool` 全局安装，可以在任何目录直接使用 `logger` 命令：
+使用 `uv tool` 全局安装，可以在任何目录直接使用 `timeflow` 命令：
 
 ```bash
 # 1. 克隆或进入项目目录
@@ -38,7 +38,7 @@ uv tool install --editable .
 make install
 ```
 
-安装后，`logger` 命令将在任何目录都可用！✨
+安装后，`timeflow` 命令将在任何目录都可用！✨
 
 #### 方式 2：项目内使用
 
@@ -52,7 +52,7 @@ cd /path/to/logger
 uv sync
 ```
 
-然后使用 `uv run logger` 命令（需要在项目目录内）。
+然后使用 `uv run timeflow` 命令（需要在项目目录内）。
 
 ### 配置 API Key
 
@@ -74,10 +74,10 @@ GEMINI_API_KEY=your_actual_api_key_here
 
 ```bash
 # 如果使用全局安装
-logger --help
+timeflow --help
 
 # 如果使用项目内安装
-uv run logger --help
+uv run timeflow --help
 ```
 
 看到帮助信息说明安装成功！✅
@@ -86,7 +86,7 @@ uv run logger --help
 
 > 💡 **新特性**：现在默认进入交互编辑模式，可以一次输入中多次粘贴文字和图片！详见 [交互模式指南](INTERACTIVE_MODE_GUIDE.md)
 
-> 📝 **注意**：以下示例假设你已全局安装。如果使用项目内安装，请在命令前加 `uv run`（如 `uv run logger add`）
+> 📝 **注意**：以下示例假设你已全局安装。如果使用项目内安装，请在命令前加 `uv run`（如 `uv run timeflow add`）
 
 ### 命令行界面
 
@@ -96,10 +96,10 @@ uv run logger --help
 
 ```bash
 # 进入交互编辑模式，可以多次粘贴内容
-logger add
+timeflow add
 
 # 或明确指定
-logger add --edit
+timeflow add --edit
 ```
 
 在交互模式下：
@@ -112,25 +112,25 @@ logger add --edit
 
 ```bash
 # 先复制内容，然后运行
-logger add --no-edit
+timeflow add --no-edit
 ```
 
 **直接指定文字**：
 
 ```bash
-logger add --text "正在学习 Python 编程"
+timeflow add --text "正在学习 Python 编程"
 ```
 
 **指定图片**：
 
 ```bash
-logger add --image /path/to/image.jpg
+timeflow add --image /path/to/image.jpg
 ```
 
 **同时指定文字和图片**：
 
 ```bash
-logger add --text "代码截图" --image screenshot.png
+timeflow add --text "代码截图" --image screenshot.png
 ```
 
 #### 2. 查询日志
@@ -138,37 +138,37 @@ logger add --text "代码截图" --image screenshot.png
 **查看最近 10 条**：
 
 ```bash
-logger list
+timeflow list
 ```
 
 **查看今天的日志**：
 
 ```bash
-logger list --today
+timeflow list --today
 ```
 
 **查看指定日期**：
 
 ```bash
-logger list --date 2025-11-27
+timeflow list --date 2025-11-27
 ```
 
 **查看日期范围**：
 
 ```bash
-logger list --range 2025-11-01 2025-11-30
+timeflow list --range 2025-11-01 2025-11-30
 ```
 
 **按分类筛选**：
 
 ```bash
-logger list --category 工作
+timeflow list --category 工作
 ```
 
 **自定义数量**：
 
 ```bash
-logger list --limit 50
+timeflow list --limit 50
 ```
 
 #### 3. 统计分析
@@ -176,31 +176,31 @@ logger list --limit 50
 **总体统计**：
 
 ```bash
-logger stats
+timeflow stats
 ```
 
 **今日统计**：
 
 ```bash
-logger stats --today
+timeflow stats --today
 ```
 
 **本周统计**：
 
 ```bash
-logger stats --week
+timeflow stats --week
 ```
 
 **本月统计**：
 
 ```bash
-logger stats --month
+timeflow stats --month
 ```
 
 #### 4. 启动 Web 界面
 
 ```bash
-logger web
+timeflow web
 ```
 
 默认在 `http://127.0.0.1:8000` 启动。
@@ -208,7 +208,7 @@ logger web
 指定端口和主机：
 
 ```bash
-logger web --host 0.0.0.0 --port 5000
+timeflow web --host 0.0.0.0 --port 5000
 ```
 
 ### Web 界面
@@ -234,7 +234,7 @@ logger web --host 0.0.0.0 --port 5000
 ### 使用示例
 
 ```bash
-$ logger add
+$ timeflow add
 # ... 交互输入内容 ...
 
 💾 保存到数据库...
@@ -315,10 +315,10 @@ GEMINI_MODEL=gemini-1.5-flash          # 模型选择（flash 或 pro）
 
 ## 💡 使用技巧
 
-1. **快速记录**：养成复制关键内容的习惯，然后立即运行 `logger add`
+1. **快速记录**：养成复制关键内容的习惯，然后立即运行 `timeflow add`
 2. **命令自动补全**：启用 shell 自动补全，按 Tab 键自动补全命令（见 [SHELL_COMPLETION.md](SHELL_COMPLETION.md)）
-3. **创建快捷别名**：在 `~/.zshrc` 中添加 `alias la='logger add'`，快速记录
-4. **定期回顾**：使用 `logger stats --week` 查看每周的时间分配
+3. **创建快捷别名**：在 `~/.zshrc` 中添加 `alias la='timeflow add'`，快速记录
+4. **定期回顾**：使用 `timeflow stats --week` 查看每周的时间分配
 5. **分析优化**：通过统计数据识别时间黑洞，优化时间使用
 6. **标签筛选**：合理使用 AI 生成的标签，便于后续查找
 7. **图片记录**：截图重要界面或文档，让日志更完整
@@ -388,16 +388,16 @@ make clean
 
 ```bash
 # 测试添加功能
-logger add --text "测试日志"
+timeflow add --text "测试日志"
 
 # 测试查询功能
-logger list --today
+timeflow list --today
 
 # 测试统计功能
-logger stats
+timeflow stats
 
 # 测试 Web 界面
-logger web
+timeflow web
 ```
 
 ### 代码结构

@@ -35,10 +35,10 @@
 ### 在任何目录使用 logger
 ```bash
 # 不再需要 cd 到项目目录或使用 uv run
-logger add
-logger list --today
-logger stats --week
-logger web
+timeflow add
+timeflow list --today
+timeflow stats --week
+timeflow web
 ```
 
 ### 使用 Makefile 管理
@@ -58,15 +58,15 @@ eval "$(_LOGGER_COMPLETE=zsh_source logger)"
 然后：
 ```bash
 source ~/.zshrc
-logger <Tab>     # 按 Tab 自动补全
+timeflow <Tab>     # 按 Tab 自动补全
 ```
 
 ### 创建快捷别名（可选）
 在 `~/.zshrc` 中添加：
 ```bash
-alias la='logger add'
-alias ll='logger list'
-alias ls='logger stats'
+alias la='timeflow add'
+alias ll='timeflow list'
+alias ls='timeflow stats'
 ```
 
 ## 📊 工具状态
@@ -89,8 +89,8 @@ alias ls='logger stats'
 
 1. **启用自动补全**：按照 shell-completion.md 配置
 2. **创建别名**：在 shell 配置文件中添加快捷别名
-3. **开始使用**：直接运行 `logger add` 添加第一条日志
-4. **查看帮助**：运行 `logger --help` 或 `make help`
+3. **开始使用**：直接运行 `timeflow add` 添加第一条日志
+4. **查看帮助**：运行 `timeflow --help` 或 `make help`
 
 ---
 

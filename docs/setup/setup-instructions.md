@@ -60,7 +60,7 @@ GEMINI_API_KEY=你从Google AI Studio获取的实际API Key
 在**任意目录**运行以下命令测试：
 
 ```bash
-logger --help
+timeflow --help
 ```
 
 应该看到命令帮助信息。如果看到了，说明安装成功！✅
@@ -73,51 +73,51 @@ logger --help
 
 ```bash
 # 方式1：交互式编辑模式（默认，推荐）
-logger add
+timeflow add
 
 # 方式2：直接输入文字
-logger add --text "开始使用生活日志工具"
+timeflow add --text "开始使用生活日志工具"
 
 # 方式3：指定图片
-logger add --image /path/to/image.png
+timeflow add --image /path/to/image.png
 ```
 
 ### 查看日志
 
 ```bash
 # 查看最近 10 条日志
-logger list
+timeflow list
 
 # 查看今天的日志
-logger list --today
+timeflow list --today
 
 # 查看指定日期的日志
-logger list --date 2025-12-01
+timeflow list --date 2025-12-01
 
 # 按分类筛选
-logger list --category 工作
+timeflow list --category 工作
 ```
 
 ### 查看统计
 
 ```bash
 # 总体统计
-logger stats
+timeflow stats
 
 # 今日统计
-logger stats --today
+timeflow stats --today
 
 # 本周统计
-logger stats --week
+timeflow stats --week
 
 # 本月统计
-logger stats --month
+timeflow stats --month
 ```
 
 ### 启动 Web 界面
 
 ```bash
-logger web
+timeflow web
 ```
 
 然后在浏览器打开：http://127.0.0.1:8000
@@ -150,10 +150,10 @@ source ~/.zshrc
 
 ```bash
 # 在 ~/.zshrc 或 ~/.bashrc 中添加
-alias log='logger'
-alias la='logger add'
-alias ll='logger list'
-alias ls='logger stats'
+alias log='timeflow'
+alias la='timeflow add'
+alias ll='timeflow list'
+alias ls='timeflow stats'
 ```
 
 然后重新加载配置：

@@ -110,3 +110,4 @@ class ClipboardHandler:
         
         return bool(text) or has_image
 
+

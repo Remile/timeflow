@@ -25,13 +25,13 @@
 ```bash
 # 现在可以在任何目录使用 logger！
 cd ~
-logger list --today        # ✅ 正常工作
+timeflow list --today        # ✅ 正常工作
 
 cd /tmp
-logger stats --today       # ✅ 正常工作
+timeflow stats --today       # ✅ 正常工作
 
 cd /var/tmp
-logger add --text "测试"   # ✅ 正常工作
+timeflow add --text "测试"   # ✅ 正常工作
 ```
 
 ---
@@ -69,25 +69,25 @@ for tag, count in sorted_tags:
 
 ### 测试用例 1：不同目录运行 list 命令
 ```bash
-cd ~ && logger list --today
+cd ~ && timeflow list --today
 # ✅ 成功显示 2 条日志
 ```
 
 ### 测试用例 2：不同目录运行 stats 命令
 ```bash
-cd /tmp && logger stats --today
+cd /tmp && timeflow stats --today
 # ✅ 成功显示统计信息和热门标签
 ```
 
 ### 测试用例 3：不同目录运行 add 命令
 ```bash
-cd /var/tmp && logger add --text "测试在 /var/tmp 目录添加日志"
+cd /var/tmp && timeflow add --text "测试在 /var/tmp 目录添加日志"
 # ✅ 成功添加日志 (ID: 8)
 ```
 
 ### 测试用例 4：主目录运行 list 命令
 ```bash
-cd ~ && logger list --limit 3
+cd ~ && timeflow list --limit 3
 # ✅ 成功显示最近 3 条日志
 ```
 
@@ -142,10 +142,10 @@ for tag, count in sorted_tags:
 - ✅ `src/logger/cli.py` - 统计命令标签显示
 
 ### 受影响的功能
-- ✅ `logger add` - 添加日志
-- ✅ `logger list` - 查询日志
-- ✅ `logger stats` - 统计分析
-- ✅ `logger web` - Web 界面（未直接测试，但底层配置已修复）
+- ✅ `timeflow add` - 添加日志
+- ✅ `timeflow list` - 查询日志
+- ✅ `timeflow stats` - 统计分析
+- ✅ `timeflow web` - Web 界面（未直接测试，但底层配置已修复）
 
 ### 向后兼容性
 - ✅ 完全向后兼容
@@ -197,10 +197,10 @@ IMAGE_STORAGE_PATH=/Users/moego-better/.logger/data/images
 在任意目录运行以下命令，都应该正常工作：
 
 ```bash
-logger --help           # ✅ 显示帮助
-logger list --today     # ✅ 显示今天的日志
-logger stats --today    # ✅ 显示今日统计
-logger add --text "测试" # ✅ 添加日志
+timeflow --help           # ✅ 显示帮助
+timeflow list --today     # ✅ 显示今天的日志
+timeflow stats --today    # ✅ 显示今日统计
+timeflow add --text "测试" # ✅ 添加日志
 ```
 
 ---

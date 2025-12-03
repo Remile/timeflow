@@ -149,3 +149,4 @@ class GeminiAnalyzer:
                 "parse_error": str(e)
             }
 
+

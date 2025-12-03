@@ -5,19 +5,19 @@
 ### 1. 交互模式（默认）
 
 ```bash
-uv run logger add
+uv run timeflow add
 ```
 
 ### 2. 快速模式
 
 ```bash
-uv run logger add --no-edit
+uv run timeflow add --no-edit
 ```
 
 ### 3. 直接输入
 
 ```bash
-uv run logger add --text "完成项目部署"
+uv run timeflow add --text "完成项目部署"
 ```
 
 ## 完整示例
@@ -27,7 +27,7 @@ uv run logger add --text "完成项目部署"
 **场景**：学习了一个新的 Python 技巧
 
 ```bash
-$ uv run logger add
+$ uv run timeflow add
 
 第 1 次粘贴：
 学习了 Python 的 asyncio 异步编程
@@ -58,7 +58,7 @@ done
 **场景**：参加了产品评审会议
 
 ```bash
-$ uv run logger add
+$ uv run timeflow add
 
 第 1 次粘贴：
 参加新版本产品评审会议
@@ -85,7 +85,7 @@ done
 ### 示例 3：记录运动
 
 ```bash
-$ uv run logger add --text "晨跑 5 公里，用时 28 分钟"
+$ uv run timeflow add --text "晨跑 5 公里，用时 28 分钟"
 
 📊 分析结果：
 总结：晨跑 5 公里
@@ -97,7 +97,7 @@ $ uv run logger add --text "晨跑 5 公里，用时 28 分钟"
 ### 示例 4：记录阅读
 
 ```bash
-$ uv run logger add
+$ uv run timeflow add
 
 第 1 次粘贴：
 阅读《人类简史》第三章
@@ -122,7 +122,7 @@ done
 ### 查看今天的日志
 
 ```bash
-$ uv run logger list --today
+$ uv run timeflow list --today
 
 📅 今天的日志
 
@@ -146,7 +146,7 @@ $ uv run logger list --today
 ### 查看统计
 
 ```bash
-$ uv run logger stats --today
+$ uv run timeflow stats --today
 
 📊 今日统计
 
@@ -167,25 +167,25 @@ $ uv run logger stats --today
 ### 按分类查询
 
 ```bash
-uv run logger list --category 学习 --limit 20
+uv run timeflow list --category 学习 --limit 20
 ```
 
 ### 按日期范围查询
 
 ```bash
-uv run logger list --range 2025-11-01 2025-11-30
+uv run timeflow list --range 2025-11-01 2025-11-30
 ```
 
 ### 查看本周统计
 
 ```bash
-uv run logger stats --week
+uv run timeflow stats --week
 ```
 
 ### 启动 Web 界面
 
 ```bash
-uv run logger web
+uv run timeflow web
 ```
 
 然后访问：http://127.0.0.1:8000

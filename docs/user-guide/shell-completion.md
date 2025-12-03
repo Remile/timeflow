@@ -80,9 +80,9 @@ env _LOGGER_COMPLETE=fish_source logger > ~/.config/fish/completions/logger.fish
    # 显示：add  list  stats  web
    ```
 
-2. **选项补全**：输入 `logger add -` 后按 Tab 键，查看可用的选项
+2. **选项补全**：输入 `timeflow add -` 后按 Tab 键，查看可用的选项
    ```bash
-   logger add -<Tab>
+   timeflow add -<Tab>
    # 显示：-t  --text  -i  --image  -e  --edit  --no-edit
    ```
 
@@ -97,7 +97,7 @@ env _LOGGER_COMPLETE=fish_source logger > ~/.config/fish/completions/logger.fish
 logger <Tab>
 
 # 尝试选项补全
-logger list --<Tab>
+timeflow list --<Tab>
 ```
 
 如果看到补全建议，说明配置成功！

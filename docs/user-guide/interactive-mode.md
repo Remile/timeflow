@@ -9,13 +9,13 @@
 ### 启动交互模式
 
 ```bash
-uv run logger add
+uv run timeflow add
 ```
 
 或者明确指定：
 
 ```bash
-uv run logger add --edit
+uv run timeflow add --edit
 ```
 
 ### 交互流程
@@ -31,7 +31,7 @@ uv run logger add --edit
 ### 示例 1：学习笔记
 
 ```
-$ uv run logger add
+$ uv run timeflow add
 
 📝 交互编辑模式
 你可以多次粘贴文字和图片，输入 'done' 或按 Ctrl+D 完成
@@ -61,7 +61,7 @@ done
 ### 示例 2：工作任务
 
 ```
-$ uv run logger add
+$ uv run timeflow add
 
 第 1 次粘贴：
 修复用户登录页面的 UI 问题
@@ -84,7 +84,7 @@ done
 ### 示例 3：纯文字记录
 
 ```
-$ uv run logger add
+$ uv run timeflow add
 
 第 1 次粘贴：
 下午3点参加产品需求评审会议
@@ -166,14 +166,14 @@ done
 在运行命令前，先在其他应用中准备好要记录的内容：
 1. 打开浏览器/文档/代码编辑器
 2. 选择并复制第一部分内容
-3. 运行 `uv run logger add`
+3. 运行 `uv run timeflow add`
 4. 粘贴第一部分
 5. 切换回源应用，复制下一部分
 6. 重复直到完成
 
 ### 技巧 2：使用多个窗口
 
-- 一个窗口：运行 `logger add`
+- 一个窗口：运行 `timeflow add`
 - 另一个窗口：准备要复制的内容
 - 在两个窗口间切换复制粘贴
 
@@ -206,7 +206,7 @@ Cmd + Shift + Ctrl + 4  # 截图到剪贴板（推荐）
 
 ```bash
 # 复制内容后
-uv run logger add --no-edit
+uv run timeflow add --no-edit
 ```
 
 ## 常见问题
@@ -246,7 +246,7 @@ A: 完成输入后，程序会显示收集的内容统计。实际内容会在 A
 ### 记录学习进度
 
 1. 打开教程网页
-2. 运行 `uv run logger add`
+2. 运行 `uv run timeflow add`
 3. 复制教程标题和URL → 粘贴
 4. 截图关键代码 → 粘贴
 5. 输入自己的理解 → 粘贴
@@ -254,7 +254,7 @@ A: 完成输入后，程序会显示收集的内容统计。实际内容会在 A
 
 ### 记录工作任务
 
-1. 运行 `uv run logger add`
+1. 运行 `uv run timeflow add`
 2. 从项目管理工具复制任务描述
 3. 截图相关设计稿
 4. 添加技术方案要点

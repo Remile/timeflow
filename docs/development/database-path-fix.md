@@ -77,15 +77,15 @@ IMAGE_STORAGE_PATH=/path/to/my/custom/location/images
 ```bash
 # 在主目录
 cd ~
-logger list --today
+timeflow list --today
 
 # 在临时目录
 cd /tmp
-logger stats --today
+timeflow stats --today
 
 # 在任何其他目录
 cd /path/to/anywhere
-logger add --text "测试"
+timeflow add --text "测试"
 ```
 
 ## 建议

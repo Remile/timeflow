@@ -35,7 +35,7 @@ GEMINI_API_KEY=你的实际API密钥
 在任意目录运行：
 
 ```bash
-logger --help
+timeflow --help
 ```
 
 看到帮助信息说明安装成功！✅
@@ -47,7 +47,7 @@ logger --help
 运行命令进入交互模式：
 
 ```bash
-logger add
+timeflow add
 ```
 
 然后你可以：
@@ -80,19 +80,19 @@ done
 先复制内容，然后快速添加：
 
 ```bash
-logger add --no-edit
+timeflow add --no-edit
 ```
 
 ### 方式 3：直接输入
 
 ```bash
-logger add --text "正在编写项目文档"
+timeflow add --text "正在编写项目文档"
 ```
 
 ### 方式 4：指定图片
 
 ```bash
-logger add --image /path/to/screenshot.png
+timeflow add --image /path/to/screenshot.png
 ```
 
 ## 第三步：查看日志
@@ -100,19 +100,19 @@ logger add --image /path/to/screenshot.png
 ### 查看今天的日志
 
 ```bash
-logger list --today
+timeflow list --today
 ```
 
 ### 查看最近 20 条
 
 ```bash
-logger list --limit 20
+timeflow list --limit 20
 ```
 
 ### 按分类查看
 
 ```bash
-logger list --category 工作
+timeflow list --category 工作
 ```
 
 ## 第四步：查看统计
@@ -120,7 +120,7 @@ logger list --category 工作
 ### 今日统计
 
 ```bash
-logger stats --today
+timeflow stats --today
 ```
 
 你会看到：
@@ -132,7 +132,7 @@ logger stats --today
 ### 本周统计
 
 ```bash
-logger stats --week
+timeflow stats --week
 ```
 
 ## 第五步：使用 Web 界面
@@ -140,7 +140,7 @@ logger stats --week
 启动 Web 服务器：
 
 ```bash
-logger web
+timeflow web
 ```
 
 然后在浏览器访问：http://127.0.0.1:8000
@@ -156,7 +156,7 @@ logger web
 
 ```bash
 # 运行命令进入交互模式
-logger add
+timeflow add
 
 # 第 1 次粘贴：文章标题和摘要
 # 第 2 次粘贴：文章截图
@@ -173,24 +173,24 @@ logger add
 
 ```bash
 # 进入交互模式
-logger add
+timeflow add
 
 # 粘贴任务描述、需求文档截图、相关链接
 # 一次性记录完整的任务信息
 # 输入 done 完成
 
 # 周末查看本周工作统计
-logger stats --week
+timeflow stats --week
 ```
 
 ### 场景 3：娱乐追踪
 
 ```bash
 # 看视频、玩游戏时记录一下
-logger add --text "观看《三体》第三集"
+timeflow add --text "观看《三体》第三集"
 
 # 月底查看娱乐时间占比
-logger stats --month
+timeflow stats --month
 ```
 
 ## 每日工作流建议
@@ -199,33 +199,33 @@ logger stats --month
 
 ```bash
 # 查看昨天的日志，计划今天
-logger list --limit 10
+timeflow list --limit 10
 ```
 
 ### 工作中
 
-- 每次切换任务时，复制任务描述并运行 `logger add`
-- 看到重要信息时，截图并运行 `logger add`
+- 每次切换任务时，复制任务描述并运行 `timeflow add`
+- 看到重要信息时，截图并运行 `timeflow add`
 - 💡 提示：按 Tab 键使用命令自动补全
 
 ### 晚上
 
 ```bash
 # 回顾今天的活动
-logger stats --today
+timeflow stats --today
 
 # 启动 Web 界面深度分析
-logger web
+timeflow web
 ```
 
 ### 周末
 
 ```bash
 # 查看本周统计
-logger stats --week
+timeflow stats --week
 
 # 通过 Web 界面查看图表
-logger web
+timeflow web
 # 访问 http://127.0.0.1:8000/stats
 ```
 
@@ -253,9 +253,9 @@ source ~/.zshrc
 在 `~/.zshrc` 或 `~/.bashrc` 中添加：
 
 ```bash
-alias la='logger add'
-alias ll='logger list'
-alias ls='logger stats'
+alias la='timeflow add'
+alias ll='timeflow list'
+alias ls='timeflow stats'
 ```
 
 然后就可以使用更简短的命令：
@@ -269,13 +269,13 @@ ls --week       # 查看本周统计
 ### 3. 快速查询特定日期
 
 ```bash
-logger list --date 2025-11-27
+timeflow list --date 2025-11-27
 ```
 
 ### 4. 查看日期范围
 
 ```bash
-logger list --range 2025-11-01 2025-11-30
+timeflow list --range 2025-11-01 2025-11-30
 ```
 
 ### 5. 数据备份

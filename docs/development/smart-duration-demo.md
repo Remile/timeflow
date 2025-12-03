@@ -7,7 +7,7 @@
 **08:30** - 我打开电脑，准备开始今天的工作
 
 ```bash
-$ logger add
+$ timeflow add
 📝 交互编辑模式
 你可以多次粘贴文字和图片，输入 'done' 或按 Ctrl+D 完成
 
@@ -38,7 +38,7 @@ $ logger add
 **10:15** - 收到紧急会议通知，需要参加讨论
 
 ```bash
-$ logger add
+$ timeflow add
 第 1 次粘贴：
 > 参加产品讨论会，讨论新功能的需求和设计
 > done
@@ -60,7 +60,7 @@ $ logger add
 **11:30** - 会议结束，继续编码
 
 ```bash
-$ logger add
+$ timeflow add
 > 继续完成用户登录功能，处理表单验证
 > done
 
@@ -81,7 +81,7 @@ $ logger add
 **12:30** - 去吃午餐
 
 ```bash
-$ logger add
+$ timeflow add
 > 午餐时间，去附近的餐厅吃饭
 > done
 
@@ -102,7 +102,7 @@ $ logger add
 **13:30** - 查看今天到目前为止的时间安排
 
 ```bash
-$ logger list --today
+$ timeflow list --today
 
 📅 今天的日志
 
@@ -146,7 +146,7 @@ $ logger list --today
 ### 时间统计
 
 ```bash
-$ logger stats --today
+$ timeflow stats --today
 
 📊 今日统计
 
@@ -194,20 +194,20 @@ $ logger stats --today
 ### 2️⃣ 查看时间线
 定期查看今天的日志，了解时间分配：
 ```bash
-logger list --today
+timeflow list --today
 ```
 
 ### 3️⃣ 分析统计
 每天结束时查看统计，反思时间使用：
 ```bash
-logger stats --today
+timeflow stats --today
 ```
 
 ### 4️⃣ 周期复盘
 周末或月末查看更长时间的统计：
 ```bash
-logger stats --week
-logger stats --month
+timeflow stats --week
+timeflow stats --month
 ```
 
 ---
